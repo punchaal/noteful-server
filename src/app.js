@@ -5,8 +5,8 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const errorHandler = require('./error-handler')
-const foldersRouter = require('./folders/folder-router')
-const notesRouter = require('./notes/note-router')
+const folderRouter = require('./folders/folder-router')
+const noteRouter = require('./notes/note-router')
 
 const app = express()
 
@@ -19,8 +19,8 @@ app.use('/user', function (req, res, next) {
   console.log('Request Type:', req.method)
   next()
 })
-app.use('./api/folders',foldersRouter)
-app.use('./api/notes',notesRouter)
+app.use('/api/folders',folderRouter)
+app.use('/api/notes',noteRouter)
 
 app.get('/', (req, res) => {
   res.send('Welcome to the Noteful App')
